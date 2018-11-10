@@ -1,7 +1,7 @@
 
 //$( document ).ready(function() {
 
-var weatherArray = ["cold", "snow", "sunny"]
+var weatherArray = ["Cold", "Snow", "Sunny", "Rain"]
 
 
 
@@ -29,7 +29,7 @@ var addBtn = function(){
         method: "GET"
       }).then(function (response) {
         for (var i = 0; i < response.data.length; i++) {
-        console.log(response.data[i])
+        
         var newDiv = $("<div>");
         newDiv.addClass("gifDiv")
         var newImage = $("<img>");
@@ -39,12 +39,13 @@ var addBtn = function(){
         
         newImage.on("click", function(){
           if ($(this).attr("data-still") == $(this).attr("src")) {
-            $(this).attr("src", $(this).attr("data-moving"))
+              $(this).attr("src", $(this).attr("data-moving"))
           }
           else { 
-            $(this).attr("src", $(this).attr("data-still"))
+              $(this).attr("src", $(this).attr("data-still"))
           }
         })
+        
           $(newDiv).append(newImage);
           var rating = $("<p>").text("Rating : " + response.data[i].rating)
           $(newDiv).append(rating);
@@ -63,3 +64,5 @@ var addBtn = function(){
 }
 
 addBtn();
+
+//console.log(response.data[i])
